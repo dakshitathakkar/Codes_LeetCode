@@ -1,3 +1,4 @@
 # Codes_LeetCode
 
-My LeetCode solutions 
+
+DSA Questions I solved on LeetCode and GeeksForGeeks practice portal 
