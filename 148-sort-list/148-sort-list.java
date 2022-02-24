@@ -40,8 +40,10 @@ class Solution {
     // }
     
     public ListNode mergeTwoSort(ListNode p1, ListNode p2){
-        if(p1 == null || p2 == null)
-            return p1==null?p1:p2;
+        if(p1 == null)
+            return p1;
+        if(p2 == null)
+            return p2;
         ListNode h3 = new ListNode(-1);
         ListNode p3 = h3;
         
