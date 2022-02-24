@@ -39,13 +39,11 @@ class Solution {
     //     return slow;
     // }
     
-    public ListNode mergeTwoSort(ListNode h1, ListNode h2){
-        if(h1 == null || h2 == null)
-            return h1==null?h1:h2;
+    public ListNode mergeTwoSort(ListNode p1, ListNode p2){
+        if(p1 == null || p2 == null)
+            return p1==null?p1:p2;
         ListNode h3 = new ListNode(-1);
         ListNode p3 = h3;
-        ListNode p1 = h1;
-        ListNode p2 = h2;
         
         while(p1 != null && p2 != null){
             if(p1.val < p2.val){
