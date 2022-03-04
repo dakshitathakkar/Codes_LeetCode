@@ -1,4 +1,4 @@
 # Codes_LeetCode
 
 
-DSA Questions I solved on LeetCode and GeeksForGeeks practice portal 
+DSA Questions I practice on LeetCode and GeeksForGeeks portal.
