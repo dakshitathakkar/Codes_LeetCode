@@ -26,6 +26,9 @@ class Solution
     public static int getCount(Node head)
     {
         int count = 0;
+        if(head == null){
+            return count;
+        }
         Node temp = head;
         while(temp != null){
             temp = temp.next;
