@@ -16,10 +16,10 @@ class MedianFinder {
     }
     
     public double findMedian() {
-       if (maxH.size() == minH.size())
-		return (maxH.peek() + minH.peek()) / 2.0;
-	else
-		return maxH.peek();
+        if(maxH.size()==minH.size())
+            return (maxH.peek() + minH.peek())/2.0;
+        else
+            return maxH.peek();
     }
 }
 
