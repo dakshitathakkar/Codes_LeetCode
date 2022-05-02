@@ -17,6 +17,9 @@ class Solution {
     public int minDepth(TreeNode root) {
         if(root == null)
             return 0;
+        return helper(root);
+    }
+    public int helper(TreeNode root){
         int left = minDepth(root.left);
         int right = minDepth(root.right);
         
