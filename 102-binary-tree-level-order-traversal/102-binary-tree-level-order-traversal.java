@@ -15,42 +15,28 @@
  */
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-       Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
-        
-        if(root == null) return wrapList;
-        
-        queue.offer(root);
-        while(!queue.isEmpty()){
-            int levelNum = queue.size();
-            List<Integer> subList = new LinkedList<Integer>();
-            for(int i=0; i<levelNum; i++) {
-                if(queue.peek().left != null) queue.offer(queue.peek().left);
-                if(queue.peek().right != null) queue.offer(queue.peek().right);
-                subList.add(queue.poll().val);
-            }
-            wrapList.add(subList);
+        List<List<Integer>> res = new ArrayList<>();
+        Queue<TreeNode> q = new LinkedList<>();
+        if(root == null){
+            return res;
         }
-        return wrapList;
+        TreeNode node = root;
+        q.offer(node);
+        while(!q.isEmpty()){
+            List<Integer> sub = new ArrayList<>();
+            int levelNum = q.size();
+            for(int i=0; i<levelNum; i++){
+                node = q.poll();
+                if(node.left != null){
+                    q.offer(node.left);
+                }
+                if(node.right != null){
+                    q.offer(node.right);
+                }
+                sub.add(node.val);
+            }
+            res.add(sub);
+        }
+        return res;
+    }
 }
-}
-
-
-
-// Queue<TreeNode> queue = new LinkedList<TreeNode>();
-//         List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
-        
-//         if(root == null) return wrapList;
-        
-//         queue.offer(root);
-//         while(!queue.isEmpty()){
-//             int levelNum = queue.size();
-//             List<Integer> subList = new LinkedList<Integer>();
-//             for(int i=0; i<levelNum; i++) {
-//                 if(queue.peek().left != null) queue.offer(queue.peek().left);
-//                 if(queue.peek().right != null) queue.offer(queue.peek().right);
-//                 subList.add(queue.poll().val);
-//             }
-//             wrapList.add(subList);
-//         }
-//         return wrapList;
