@@ -117,38 +117,32 @@ class Node
     {
         data = item;
         left = right = null;
+        
     }
 }*/
 class Tree
 {
+    ArrayList<Integer> ls = new ArrayList<>();
     //Function to return list containing elements of left view of binary tree.
     ArrayList<Integer> leftView(Node root)
     {
-        ArrayList<Integer> response = new ArrayList<>();
-        printLeft(root, response);
-        return response;
+        if(root == null){
+        return ls;
+        }
+        helper(root,0);
+        return ls;
       // Your code here
     }
     
-    void printLeft(Node root, ArrayList<Integer> response){
-        if(root == null)
-        return;
-        Queue<Node> q = new LinkedList<>();
-        q.add(root);
-        while(!q.isEmpty()){
-            int count = q.size();
-            for(int i=0; i<count; i++){
-                Node curr = q.poll();
-                if(i==0){
-                    response.add(curr.data);
-                }
-                if(curr.left != null){
-                    q.add(curr.left);
-                }
-                if(curr.right != null){
-                    q.add(curr.right);
-                }
-            }
+    void helper(Node root, int level){
+        if(root == null){
+            return;
         }
+        if(level == ls.size()){
+            ls.add(root.data);
+        }
+         helper(root.left,level+1);
+         helper(root.right, level+1);
     }
+   
 }
