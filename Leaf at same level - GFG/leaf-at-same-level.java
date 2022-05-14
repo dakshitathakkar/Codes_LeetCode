@@ -123,8 +123,6 @@ class Solution
     int levelOfLeaf = 0;
     boolean check(Node root)
     {
-        if(root == null)
-        return false;
         return helper(root,0);
 	// Your code here	
     }
