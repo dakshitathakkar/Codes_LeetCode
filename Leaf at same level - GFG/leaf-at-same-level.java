@@ -133,7 +133,7 @@ class Solution
         if(root.left == null && root.right == null){
             if(levelOfLeaf == 0){
                 levelOfLeaf = level;
-                return true;
+                //return true;
             }
             return levelOfLeaf == level;
         }
