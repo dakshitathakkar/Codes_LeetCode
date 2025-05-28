@@ -14,12 +14,15 @@ class Solution {
             return null;
         }
         int val = root.val;
-        if(val>p.val && val>q.val){
+        System.out.println(val);
+        if(val > p.val && val > q.val){
             return lowestCommonAncestor(root.left,p,q);
         }
-        else if(val<p.val && val<q.val){
+        else if(val < p.val && val < q.val){
             return lowestCommonAncestor(root.right,p,q);
         }
         return root;
     }
+
+    
 }
