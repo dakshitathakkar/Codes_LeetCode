@@ -15,22 +15,23 @@
  */
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
-        int[] count = new int[]{0};
-        int[] ks = new int[]{Integer.MIN_VALUE};
-        inorder(root,k,count,ks);
-        return ks[0];
+        int[] result = new int[1];
+        int[] count = new int[1];
+        kth(root,k,result,count);
+        return result[0];
     }
 
-    public void inorder(TreeNode root, int k, int[] count, int[] ks){
-        if(root == null || count[0]>=k){
+    public void kth(TreeNode root, int k, int[] result, int[] count){
+        if(root == null){
             return;
         }
-        inorder(root.left,k,count,ks);
+        kth(root.left,k,result,count);
         count[0]++;
         if(count[0] == k){
-            ks[0] = root.val;
+            result[0]=root.val;
             return;
         }
-        inorder(root.right,k,count,ks);
+        kth(root.right,k,result,count);
+
     }
 }
