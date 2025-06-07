@@ -3,23 +3,23 @@ class Solution {
         int n = nums.length;
         int sum = 0;
         for(int i=0;i<n;i++){
-            sum = sum+ nums[i];
+            sum +=nums[i];
         }
-        if(sum%2 !=0){
+        if(sum %2 != 0){
             return false;
         }
-
-        return subsetSum(nums,sum/2,n);
+        sum /=2;
+        boolean[][] dp = new boolean[n+1][sum+1];
+        return func(n-1,nums,sum, dp);
     }
 
-    public boolean subsetSum(int[] nums, int sum, int n){
-        boolean[] dp = new boolean[sum+1];
-        dp[0] = true;
-        for(int num : nums){
-            for(int i=sum;i>=num;i--){
-                dp[i] = dp [i] || dp[i-num];
-            }
+    public boolean func(int n, int[] nums, int sum, boolean[][] dp){
+        if(sum == 0){
+            return true;
         }
-        return dp[sum];
+        if(n<0 || sum <0)   return false;
+        if(dp[n][sum])  return true;
+
+        return dp[n][sum] = func(n-1,nums,sum-nums[n],dp) || func(n-1,nums,sum,dp);
     }
 }
