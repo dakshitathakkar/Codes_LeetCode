@@ -1,14 +1,20 @@
 class Solution {
     public int climbStairs(int n) {
-        int count = 1;
-        int currIdx = 1;
-        int prev = 1;
-        
-        for(int i=2;i<=n;i++){
-            count = currIdx+prev;
-            prev = currIdx;
-            currIdx = count;
+        if(n==1 || n==0){
+            return 1;
         }
-        return count;
+        int[] t = new int[n+1];
+        Arrays.fill(t,-1);
+        t[0] = 1;
+        t[1] = 1;
+        return fibRec(t,n);
+    }
+
+    public int fibRec(int[] t, int n){
+        if(t[n] != -1){
+            return t[n];
+        }
+        t[n] = fibRec(t,n-1)+fibRec(t,n-2);
+        return t[n];
     }
 }
