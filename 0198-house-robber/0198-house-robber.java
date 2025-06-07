@@ -1,29 +1,23 @@
 class Solution {
     public int rob(int[] nums) {
         int n = nums.length;
-        if(n == 1){
-            return nums[0];
-        }
-        if(n==2){
-            Math.max(nums[0], nums[1]);
-        }
-        int[] t = new int[n];
-        Arrays.fill(t,-1);
-
-        return maxProf(t,nums,n-1);
+        int[] dp = new int[n+1];
+        Arrays.fill(dp,-1);
+        dp[0]  = 0;
+        // dp[1] = nums[0];
+        return func(n,dp,nums);
     }
 
-    public int maxProf(int[] t, int[] nums, int n){
-        if (n < 0) {
-        return 0;
-    }
-        if(t[n] != -1){
-            return t[n];
+    public int func(int n, int[] dp, int[] nums){
+        if(n <=0){
+            return 0;
+        }
+        if(dp[n] != -1){
+            return dp[n];
         }
 
-        t[n] = Math.max(nums[n] + maxProf(t,nums,n-2), maxProf(t,nums,n-1));
-        System.out.println(n + " " + t[n]);
-        return t[n];
+        int take = nums[n-1] + func(n-2,dp,nums);
+        int nottake = func(n-1,dp,nums);
+        return dp[n] = Math.max(take,nottake);
     }
-
 }
