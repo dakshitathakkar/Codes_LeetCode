@@ -1,20 +1,20 @@
 class Solution {
     public int climbStairs(int n) {
-        if(n==1 || n==0){
-            return 1;
-        }
-        int[] t = new int[n+1];
-        Arrays.fill(t,-1);
-        t[0] = 1;
-        t[1] = 1;
-        return fibRec(t,n);
+        int[] dp = new int[n+1];
+        Arrays.fill(dp,-1);
+        dp[0] = 1;
+        dp[1] = 1;
+        return func(n,dp);
     }
 
-    public int fibRec(int[] t, int n){
-        if(t[n] != -1){
-            return t[n];
+    public int func(int n, int[] dp){
+        if(n==0 || n==1){
+            return 1;
         }
-        t[n] = fibRec(t,n-1)+fibRec(t,n-2);
-        return t[n];
+        if(dp[n] != -1){
+            return dp[n];
+        }
+        return dp[n] = func(n-1,dp) + func(n-2,dp);
+
     }
 }
