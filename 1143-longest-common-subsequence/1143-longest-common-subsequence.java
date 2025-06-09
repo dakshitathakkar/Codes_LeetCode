@@ -1,29 +1,20 @@
 class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
-        char[] str1 = text1.toCharArray();
-        char[] str2 = text2.toCharArray();
-        
         int m = text1.length();
         int n = text2.length();
-        int[][] dp = new int[m+1][n+1];
-        int max = 0;
-        // for(int i=0; i<=m;i++){
-        //     dp[i][0] = 0;
-        // }
-        // for(int j=0; j<=n; j++){
-        //     dp[0][j] = 0;
-        // }
-        
-        for(int i=1; i<dp.length; i++){
-            for(int j=1;j<dp[i].length;j++){
-                if(str1[i-1] == str2[j-1]){
-                    dp[i][j] = dp[i-1][j-1] + 1;
-                }
-                else{
-                    dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1]);
-                }
-            }
+        int[][] dp = new int[m][n];
+        for(int i=0;i<m;i++)    
+            Arrays.fill(dp[i],-1);
+        return func(text1.toCharArray(), text2.toCharArray(),m-1,n-1,dp);
+    }
+
+    public int func(char[] text1, char[] text2, int m, int n, int[][] dp){
+        if(m<0 || n <0)   return 0;
+        if(dp[m][n] != -1)  return dp[m][n];
+        if(text1[m] == text2[n]){
+            return dp[m][n] = 1 + func(text1,text2, m-1,n-1,dp);
         }
-        return dp[m][n];
+        else
+            return dp[m][n] = Math.max(func(text1,text2,m-1,n,dp), func(text1,text2,m,n-1,dp));
     }
 }
