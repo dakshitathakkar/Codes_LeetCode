@@ -35,8 +35,6 @@ class Solution {
             arr.add(0,1);
            }
             res = arr.stream().mapToInt(i -> i).toArray();
-
-           System.out.println(arr);
             
         }
         return res;
